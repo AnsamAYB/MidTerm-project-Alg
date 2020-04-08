@@ -1,4 +1,32 @@
-// CPCS 324 Algorithms & Data Structures 2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: 10.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: 10.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// CPCS 324 Algorithms &amp; Data Structures 2
 // Graph data structure starter - Transitive Closure Package
 
 
@@ -43,7 +71,7 @@ function main_graph()
 
     g.connectedComp = g.topoSearch(g.dfs);
 
-    document.write("dfs_push: ", g.dfs_push, "<br><br>");
+    document.write("dfs_push: ", g.dfs_push, "&lt;br>&lt;br>");
 
 
     // report connectivity status if available
@@ -55,55 +83,55 @@ function main_graph()
 
     g.connectedComp = g.topoSearch(g.bfs);
 
-    document.write("bfs_order: ", g.bfs_order, "<br>");
+    document.write("bfs_order: ", g.bfs_order, "&lt;br>");
 
 
     
 	// output transitive closure matrix using Warshall-Floyd
     
-    document.write('<br>Transitive closure<br>');
+    document.write('&lt;br>Transitive closure&lt;br>');
     
     g.warshallFloyd();
     
     if(g.adjMatrix[0][0].tc === undefined)
     {
-        document.write("Transitive closure is computed for directed graph only<br>");
+        document.write("Transitive closure is computed for directed graph only&lt;br>");
     }
     else
     {
-        for(var i=0; i<g.nv; i++){
-            for(var j=0; j<g.nv; j++){
+        for(var i=0; i&lt;g.nv; i++){
+            for(var j=0; j&lt;g.nv; j++){
                 document.write(g.adjMatrix[i][j].tc,',');
             }
-            document.write('<br>');
+            document.write('&lt;br>');
         }
     }
 
 
     // output distance matrix using Warshall-Floyd
 	
-	document.write('<br>Distance matrix <br>');
+	document.write('&lt;br>Distance matrix &lt;br>');
     
     g.warshallFloyd();
     	
     if(g.adjMatrix[0][0].dist === undefined)
     {
-        document.write("Distance matrix is computed for weighted graph only<br>");
+        document.write("Distance matrix is computed for weighted graph only&lt;br>");
     }
     else
     {
-        for(var i=0; i<g.nv; i++){
-            for(var j=0; j<g.nv; j++){
+        for(var i=0; i&lt;g.nv; i++){
+            for(var j=0; j&lt;g.nv; j++){
                 document.write(g.adjMatrix[i][j].dist,',');
             }
-            document.write('<br>');
+            document.write('&lt;br>');
         }
     }
 
     
     //print minimal spanning tree
 
-    document.write('<br>MST by Prim2 (linear PQ)<br>');
+    document.write('&lt;br>MST by Prim2 (linear PQ)&lt;br>');
     
     g.prim();
     if(g.weighted){
@@ -111,45 +139,45 @@ function main_graph()
     }
     else
     {
-        document.write('minimal spanning tree works for weighted graph only<br>');
+        document.write('minimal spanning tree works for weighted graph only&lt;br>');
     }
 
     //Print shortest path by Dijkstra from vertex 0. Shortest path problems works for weighted graph only
 
-    document.write('<br>Shortest paths by Dijkstra from vertex 0<br>');
+    document.write('&lt;br>Shortest paths by Dijkstra from vertex 0&lt;br>');
     g.Dijkstra(0);
     if(g.weighted){
         printTree(g.VT);
     }
     else
     {
-        document.write('Shortest path problems works for weighted graph only<br>');
+        document.write('Shortest path problems works for weighted graph only&lt;br>');
     }
 
     
     //Print distance matrix from Dijkstra. Distance matrix is computed for weighted graph only
-    document.write('<br>Distance matrix from Dijkstra<br>');
+    document.write('&lt;br>Distance matrix from Dijkstra&lt;br>');
     
     var disMDijkstra = [];
     
     if(g.weighted){
-        for(i=0; i<g.nv; i++){
+        for(i=0; i&lt;g.nv; i++){
             //The shortes path from vertex i to all other vertices
             g.Dijkstra(i);             
             disMDijkstra[i] = [];
 
             //fill the dist of row i
-            for(j=0; j<g.nv; j++){
+            for(j=0; j&lt;g.nv; j++){
                 disMDijkstra[i][g.VT[j].tree] = g.VT[j].distance;
             }
 
             //print row i
-            document.write(disMDijkstra[i],'<br>');
+            document.write(disMDijkstra[i],'&lt;br>');
         }
     }
     else
     {
-        document.write('Distance matrix is computed for weighted graph only<br>');
+        document.write('Distance matrix is computed for weighted graph only&lt;br>');
     }
 }
 
@@ -301,10 +329,10 @@ function Graph()
 // transitive closure package 
 
 function printTree(VT){
-    for(i=0; i<VT.length-1; i++){
+    for(i=0; i&lt;VT.length-1; i++){
         document.write((VT[i].distance===undefined? '':VT[i].distance) ,'(',VT[i].parent,',',VT[i].tree,'),');
     }
-    document.write((VT[VT.length-1].distance===undefined? '':VT[VT.length-1].distance) ,'(',VT[VT.length-1].parent,',',VT[VT.length-1].tree,').<br>');
+    document.write((VT[VT.length-1].distance===undefined? '':VT[VT.length-1].distance) ,'(',VT[VT.length-1].parent,',',VT[VT.length-1].tree,').&lt;br>');
 }
 /**
  * @descriptionThis is Dijkstra Algorithm, This algorithm is applicable to undirected and directed graphs
@@ -313,7 +341,7 @@ function printTree(VT){
  * @method 
  * @param {integer} s start vertex... email - abahkali0005@stu.kau.edu.sa
  * @author Ansam Ali 
- * 
+ * @
  */
 
 function Dijkstra_(s){
@@ -325,7 +353,7 @@ function Dijkstra_(s){
         var dist = [];
 
         //initialize queue
-        for(var i=0; i<this.nv; i++){
+        for(var i=0; i&lt;this.nv; i++){
             dist[i] = Infinity;        //dist[i] is the shortest path length to vertex i. initially infinity(unreachable) 
             penultimateV[i] = "-";           //penultimateV[i] is the next-to-last vertex of vertex i.
             pq.insert(i, dist[i]);
@@ -340,7 +368,7 @@ function Dijkstra_(s){
         
 
         //get the next vertex to be added to the tree
-        for(var i=0; i<this.nv; i++){
+        for(var i=0; i&lt;this.nv; i++){
             u = pq.deleteMin();
             this.vert[u].visit = true;
 
@@ -354,12 +382,12 @@ function Dijkstra_(s){
             //to update the tree
             //get adjacents of the newly added vertex
             var adjacents = this.vert[u].incidentEdges();
-            for(var j=0; j<adjacents.length; j++){
+            for(var j=0; j&lt;adjacents.length; j++){
                 var id = adjacents[j].adjVert_i;
                 var weight = adjacents[j].edgeWeight;
 
                 //if there's a shorter path to a vertex, consider that path (update the queue, dist, and penultimateV arrays) 
-                if(dist[u] + weight < dist[id] && !this.vert[id].visit){
+                if(dist[u] + weight &lt; dist[id] &amp;&amp; !this.vert[id].visit){
                     dist[id] = dist[u] + weight;
                     penultimateV[id] = u;
                     pq.insert(id,dist[id]);
@@ -395,7 +423,7 @@ function primImpl2(){
     // intitalize penulimate array by '-' that mean's no penulimate until now.
     // intitalize weight array by infinity.
 
-    for (var j = 0; j < this.nv; j++)
+    for (var j = 0; j &lt; this.nv; j++)
 
     {
 
@@ -412,7 +440,7 @@ function primImpl2(){
     // edges array contains all the edges (v,u)
     var edges =this.vert[0].incidentEdges();
 
-    for(var i=0;i<edges.length;i++){
+    for(var i=0;i&lt;edges.length;i++){
 
         //insert dest. vertex and weight of edge in the queue.
         pq.insert(edges[i].adjVert_i, edges[i].edgeWeight); 
@@ -444,7 +472,7 @@ function primImpl2(){
 
     //find a way to the rest n-1 vertices
 
-    for(var i=1; i<this.nv; i++){
+    for(var i=1; i&lt;this.nv; i++){
 
         //delete minimum-weight edge from queue
         u =pq.deleteMin();
@@ -467,13 +495,13 @@ function primImpl2(){
        // edges array contains all the edges (v,u)
         edges=this.vert[u].incidentEdges();
 
-        for(var j=0;j<edges.length;j++){
+        for(var j=0;j&lt;edges.length;j++){
 
 
-         //if vertex doesn't mark as visit which mean's don't add into VT & weight of edge less than weight of edge in qeueue 
+         //if vertex doesn't mark as visit which mean's don't add into VT &amp; weight of edge less than weight of edge in qeueue 
          //then insert or update  dest. vertex and its weight ,
         //update penultimateV and update weight of edge in weight array. 
-            if(!this.vert[edges[j].adjVert_i].visit && edges[j].edgeWeight < weight[edges[j].adjVert_i]){
+            if(!this.vert[edges[j].adjVert_i].visit &amp;&amp; edges[j].edgeWeight &lt; weight[edges[j].adjVert_i]){
 
                 pq.insert(edges[j].adjVert_i,edges[j].edgeWeight);
 
@@ -497,7 +525,7 @@ function primImpl2(){
 function primImpl(){
 
     // mark all vertices unvisited
-    for (var j = 0; j < this.nv; j++)
+    for (var j = 0; j &lt; this.nv; j++)
     {
         this.vert[j].visit = false;
     }
@@ -509,18 +537,18 @@ function primImpl(){
     var src;                    //id of the source of the edge
 
     //find a way to the rest n-1 vertices
-    for(i=1; i<this.nv; i++){
+    for(i=1; i&lt;this.nv; i++){
 
         var min_weight = Infinity;      //initalize the minimum weight with Infinity
         var min_weight_edge = null;     //no edge found till now
 
         
         //check fringe vertices Vt vertices
-        for(j=0; j<Vt.length; j++){
+        for(j=0; j&lt;Vt.length; j++){
             edges = Vt[j].incidentEdges();
-            for(k=0; k<edges.length; k++){
+            for(k=0; k&lt;edges.length; k++){
                 //update the minimum edge information if found
-                if(edges[k].edgeWeight < min_weight && !this.vert[edges[k].adjVert_i].visit){   
+                if(edges[k].edgeWeight &lt; min_weight &amp;&amp; !this.vert[edges[k].adjVert_i].visit){   
                     min_weight = edges[k].edgeWeight;   
                     min_weight_edge = edges[k];
                     src = Vt[j];                
@@ -549,7 +577,7 @@ function hasPath(u_i, v_i)
     //otherwise return true
 
     if(this.adjMatrix[u_i][v_i].tc === undefined){
-        return "<br>This method doesn't work for undirected graph<br>";
+        return "&lt;br>This method doesn't work for undirected graph&lt;br>";
     }
 	return (this.adjMatrix[u_i][v_i].tc == 1 ? true : false);
 }
@@ -560,17 +588,17 @@ function shortestPathImpl(u_i,v_i)
 {
     //if the dist is undefiend ==> unweightd graph ==> can't compute the shortest path.
     var d = this.adjMatrix[u_i][v_i].dist;
-	return (d === undefined? "<br>This method doesn't work for unweighted graph<br>":d);
+	return (d === undefined? "&lt;br>This method doesn't work for unweighted graph&lt;br>":d);
 }
 
 
 function isDAGImpl()
 {
     if(this.adjMatrix[0][0].tc === undefined){
-        return "<br>This method doesn't work for undirected graph<br>";
+        return "&lt;br>This method doesn't work for undirected graph&lt;br>";
     }
 
-	for (var i = 0; i < this.nv; i++) 
+	for (var i = 0; i &lt; this.nv; i++) 
 		{
 		if (this.hasPath(i, i))     //If there's a path from a vertix to itself, then there's a cycle. Otherwise not.
 		{
@@ -589,33 +617,33 @@ this.makeAdjMatrix();
 floyd = [];
 warshall = [];
 
-for (var i = 0; i < this.nv; i++) 
+for (var i = 0; i &lt; this.nv; i++) 
 {
     //make a copy of the adjacent matrix array
 	floyd[i] = this.adjMatrix[i].slice();
 	warshall[i] = this.adjMatrix[i].slice();
 
 
-	for (var j = 0; j < this.nv; j++)
+	for (var j = 0; j &lt; this.nv; j++)
 	{
         //if the value on the adjacent matrix at i,j is zero, there is no path from i to j
         //so the distance in infinity (unreachable).
         //except if i=j. There is a path of length 0 from any vertex to itself. 
-		if (this.adjMatrix[i][j] == 0 && (i != j)) 
+		if (this.adjMatrix[i][j] == 0 &amp;&amp; (i != j)) 
 		{
 			floyd[i][j] = Infinity;
 		}
 	}
 }
 
-    for (var k = 0; k < this.nv; k++) 
+    for (var k = 0; k &lt; this.nv; k++) 
     {
-        for (var i = 0; i < this.nv; i++) 
+        for (var i = 0; i &lt; this.nv; i++) 
         {
-            for (var j = 0; j < this.nv; j++) 
+            for (var j = 0; j &lt; this.nv; j++) 
             {
                 //If there's a path i->k and k->j  ===> there's a path i->j
-                warshall[i][j] = (warshall[i][j] || (warshall[i][k] && warshall[k][j])) ? 1 : 0;
+                warshall[i][j] = (warshall[i][j] || (warshall[i][k] &amp;&amp; warshall[k][j])) ? 1 : 0;
                 
                 //The shortest path i->j is the shortest between (i->k) + (k->j) and path (i->j)  
                 floyd[i][j] = Math.min(floyd[i][j], floyd[i][k] + floyd[k][j]);
@@ -637,10 +665,10 @@ function dfsTCImpl()
     if(this.digraph){
         TC = [];
 
-        for (var i = 0; i < this.nv; i++)
+        for (var i = 0; i &lt; this.nv; i++)
         {
             // mark all vertices unvisited
-            for (var j = 0; j < this.nv; j++)
+            for (var j = 0; j &lt; this.nv; j++)
             {
                 this.vert[j].visit = false;
             }
@@ -649,7 +677,7 @@ function dfsTCImpl()
 
             TC[i] = [];
 
-            for (var j = 0; j < this.nv; j++)
+            for (var j = 0; j &lt; this.nv; j++)
             {
                 TC[i][j] = 0;
             }
@@ -659,18 +687,18 @@ function dfsTCImpl()
             this.dfs_push = []; //reset the dfs push order array
             this.dfs(i);  
             
-            for (var j = 1; j < this.dfs_push.length ; j++) //start from 1 to exclude the vertex itself, we'll deal with cycle later
+            for (var j = 1; j &lt; this.dfs_push.length ; j++) //start from 1 to exclude the vertex itself, we'll deal with cycle later
             {
                 TC[i][this.dfs_push[j]]=1;	//set all vetices reachable by vertix i to 1
             }
         }
 
-        for (var i = 0; i < this.nv; i++)
+        for (var i = 0; i &lt; this.nv; i++)
 
             {   //solution of the cycle problem. if a-->b and b-->a then a-->a, and we have all relations from a vertex to another vertex 
-                for (var j = 0; j < this.nv; j++)   
+                for (var j = 0; j &lt; this.nv; j++)   
                 {
-                    if ((TC[i][j] == 1) && (TC[j][i] == 1))
+                    if ((TC[i][j] == 1) &amp;&amp; (TC[j][i] == 1))
                     {
                         TC[i][i] = 1;
                     }
@@ -776,7 +804,7 @@ function addEdgeImpl3(u_i, v_i, weight)
 
 function printGraphImpl()
 {
-    document.write("<p>GRAPH {", this.label, "} ", this.weighted ? "WEIGHTED, " : "", this.digraph ? "" : "UN", "DIRECTED - ", this.nv, " VERTICES, ", this.ne, " EDGES:</p>");
+    document.write("&lt;p>GRAPH {", this.label, "} ", this.weighted ? "WEIGHTED, " : "", this.digraph ? "" : "UN", "DIRECTED - ", this.nv, " VERTICES, ", this.ne, " EDGES:&lt;/p>");
 
 
     // report connectivity status if available
@@ -787,14 +815,14 @@ function printGraphImpl()
     // list vertices
     this.listVerts();
 
-    document.write('<br>');
+    document.write('&lt;br>');
 }
 
 
 function listVertsImpl()
 {
     var i, v; // local vars
-    for (i = 0; i < this.nv; i++)
+    for (i = 0; i &lt; this.nv; i++)
     {
         v = this.vert[i];
         document.write("VERTEX: ", i, v.vertexInfo());
@@ -809,7 +837,7 @@ function better_input(v, e)
     this.ne = e.length;
 
     // input vertices into internal vertex array
-    for (var i = 0; i < this.nv; i++)
+    for (var i = 0; i &lt; this.nv; i++)
     {
         this.vert[i] = new Vertex(v[i]);
     }
@@ -819,7 +847,7 @@ function better_input(v, e)
 
     // input vertex pairs from edge list input array
     // remember to pass vertex ids to add_edge()
-    for (var i = 0; i < this.ne; i++)
+    for (var i = 0; i &lt; this.ne; i++)
     {
         this.add_edge(e[i].u, e[i].v, e[i].w);
     }
@@ -834,15 +862,15 @@ function better_input(v, e)
 
 function better_output()
 {
-    document.write("<p>GRAPH {", this.label, "} ", this.weighted ? "WEIGHTED, " : "", this.digraph ? "" : "UN", "DIRECTED - ", this.nv, " VERTICES, ", this.ne, " EDGES:</p>");
+    document.write("&lt;p>GRAPH {", this.label, "} ", this.weighted ? "WEIGHTED, " : "", this.digraph ? "" : "UN", "DIRECTED - ", this.nv, " VERTICES, ", this.ne, " EDGES:&lt;/p>");
 
 
 	// report connectivity status if available
 	
 	switch(this.connectedComp){
-		case 0: document.write('<br> no connectivity info <br><br>');
-		case 1: document.write('<br> CONNECTED <br><br>');
-		default: document.write('<br> DISCONNECTED: '.concat(this.connectedComp,'<br>'));
+		case 0: document.write('&lt;br> no connectivity info &lt;br>&lt;br>');
+		case 1: document.write('&lt;br> CONNECTED &lt;br>&lt;br>');
+		default: document.write('&lt;br> DISCONNECTED: '.concat(this.connectedComp,'&lt;br>'));
 	}
 
     // list vertices
@@ -855,13 +883,13 @@ function topoSearchImpl(fun)
     connectedComp = 0;
 
     // mark all vertices unvisited
-    for (var i = 0; i < this.nv; i++)
+    for (var i = 0; i &lt; this.nv; i++)
     {
         this.vert[i].visit = false;
     }
 
     // traverse unvisited connected components
-    for (var i = 0; i < this.nv; i++)
+    for (var i = 0; i &lt; this.nv; i++)
     {
         if (!this.vert[i].visit)
         {
@@ -886,7 +914,7 @@ function dfsImpl(v_i)
 
     // recursively traverse unvisited adjacent vertices
     var w = v.adjacentById();
-    for (var j = 0; j < w.length; j++)
+    for (var j = 0; j &lt; w.length; j++)
     {
         if (!this.vert[w[j]].visit)
         {
@@ -921,7 +949,7 @@ function bfsImpl(v_i)
 
         // queue all unvisited vertices adjacent to u
         var w = u.adjacentById();
-        for (var i = 0; i < w.length; i++)
+        for (var i = 0; i &lt; w.length; i++)
         {
             if (!this.vert[w[i]].visit)
             {
@@ -936,12 +964,12 @@ function bfsImpl(v_i)
 function makeAdjMatrixImpl()
 {
     // initially create row elements and zero the adjacency matrix
-    for (var i = 0; i < this.nv; i++)
+    for (var i = 0; i &lt; this.nv; i++)
     {
 
         this.adjMatrix[i] = [];
 
-        for (var j = 0; j < this.nv; j++)
+        for (var j = 0; j &lt; this.nv; j++)
         {
             this.adjMatrix[i][j] = 0;
         }
@@ -950,7 +978,7 @@ function makeAdjMatrixImpl()
 
         var w = this.vert[i].adjacentById();
 
-        for (var j = 0; j < w.length; j++)
+        for (var j = 0; j &lt; w.length; j++)
         {
             this.adjMatrix[i][w[j]] = 1;
         }
@@ -961,19 +989,19 @@ function makeAdjMatrixImpl()
 function makeAdjMatrixImpl2()
 {
     // initially create row elements and zero the adjacency matrix
-    for (var i = 0; i < this.nv; i++)
+    for (var i = 0; i &lt; this.nv; i++)
     {
 
         this.adjMatrix[i] = [];
 
-        for (var j = 0; j < this.nv; j++)
+        for (var j = 0; j &lt; this.nv; j++)
         {
             this.adjMatrix[i][j] = 0;
         }
 
         // for each vertex, set 1 for each adjacent if unweighted, its weight if graph is weighted
         var adj = this.vert[i].adjacent.traverse();
-        for (var j = 0; j < adj.length; j++)
+        for (var j = 0; j &lt; adj.length; j++)
         {
             var edge = adj[j];
             this.adjMatrix[i][edge.target_v] = this.weighted ? edge.weight : 1;
@@ -984,19 +1012,19 @@ function makeAdjMatrixImpl2()
 
 function makeAdjMatrixImpl3()
 {
-    for (var i = 0; i < this.nv; i++)
+    for (var i = 0; i &lt; this.nv; i++)
     {
 
         this.adjMatrix[i] = [];
 
-        for (var j = 0; j < this.nv; j++)
+        for (var j = 0; j &lt; this.nv; j++)
         {
             this.adjMatrix[i][j] = 0;
         }
 
         // for each vertex, set 1 for each adjacent if unweighted, its weight if graph is weighted
         var enodes = this.vert[i].incidentEdges();
-        for (var j = 0; j < enodes.length; j++)
+        for (var j = 0; j &lt; enodes.length; j++)
         {
             var edge_node = enodes[j];
             this.adjMatrix[i][edge_node.adjVert_i] = this.weighted ? edge_node.edgeWeight : 1;
@@ -1016,9 +1044,9 @@ function componentInfoImpl()
 {
 	
 	switch(this.connectedComp){
-		case 0: return ('no connectivity info <br><br>');
-		case 1: return ('CONNECTED <br><br>');
-		default: return ('DISCONNECTED: '.concat(this.connectedComp,'<br>'));
+		case 0: return ('no connectivity info &lt;br>&lt;br>');
+		case 1: return ('CONNECTED &lt;br>&lt;br>');
+		default: return ('DISCONNECTED: '.concat(this.connectedComp,'&lt;br>'));
 	}
 
 }
@@ -1030,7 +1058,7 @@ function adjacentByIdImpl()
 
     var traversal_array = [];
 
-    for (var i = 0; i < traversal.length; i++)
+    for (var i = 0; i &lt; traversal.length; i++)
     {
         traversal_array[i] = traversal[i].target_v;
     }
@@ -1045,7 +1073,7 @@ function incidentEdgesImpl()
 
     var edges_info = [];
 
-    for (var i = 0; i < edges.length; i++)
+    for (var i = 0; i &lt; edges.length; i++)
     { //create an array of json objects which contains edge information.
         edges_info[i] = {
             adjVert_i: edges[i].target_v,
@@ -1060,7 +1088,7 @@ function incidentEdgesImpl()
 
 function vertexInfoImpl()
 {
-    var info = "".concat(" {", this.label, "} - VISIT: ", this.visit, " - ADJACENCY: ", this.adjacentById(), "<br>");
+    var info = "".concat(" {", this.label, "} - VISIT: ", this.visit, " - ADJACENCY: ", this.adjacentById(), "&lt;br>");
 
     return info;
 
@@ -1101,7 +1129,7 @@ function deleteMinImpl()
        // search for the node of item with the minimum value of key 
        while(pointer != null){
            // check if the key of the current item is smaller than the key of the minimum item
-         if((pointer.next != null) && (pointer.next.item.prior < minimum.item.prior)){
+         if((pointer.next != null) &amp;&amp; (pointer.next.item.prior &lt; minimum.item.prior)){
            // update the value of node of item with the minimum value of key
            minimum = pointer.next ;
            // update the value of node that has previous item of the minimum item 
@@ -1161,4 +1189,26 @@ function insertImpl(item, key)
         this.pq.insert(item);
     }
     
-}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#dfsTC">dfsTC</a></li><li><a href="global.html#Dijkstra">Dijkstra</a></li><li><a href="global.html#Dijkstra_">Dijkstra_</a></li><li><a href="global.html#hasPath">hasPath</a></li><li><a href="global.html#isDAG">isDAG</a></li><li><a href="global.html#prim">prim</a></li><li><a href="global.html#shortestPath">shortestPath</a></li><li><a href="global.html#warshallFloyd">warshallFloyd</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Apr 08 2020 19:38:43 GMT+0300 (Arabian Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
