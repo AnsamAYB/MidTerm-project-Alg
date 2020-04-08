@@ -2,6 +2,7 @@
 // Graph data structure starter - Transitive Closure Package
 
 
+
 // -----------------------------------------------------------------------
 // simple graph object with linked-list edge implementation and minimal fields
 // extra vertex and edge member fields and methods to be added later as needed
@@ -305,7 +306,16 @@ function printTree(VT){
     }
     document.write((VT[VT.length-1].distance===undefined? '':VT[VT.length-1].distance) ,'(',VT[VT.length-1].parent,',',VT[VT.length-1].tree,').<br>');
 }
-
+/**
+ * @descriptionThis is Dijkstra Algorithm, This algorithm is applicable to undirected and directed graphs
+ *                  with nonnegative weights only.
+ * @async
+ * @method 
+ * @param {integer} s start vertex... email - abahkali0005@stu.kau.edu.sa
+ * @returns
+ * @author Ansam Ali 
+ * @
+ */
 
 function Dijkstra_(s){
 
@@ -332,7 +342,7 @@ function Dijkstra_(s){
 
         //get the next vertex to be added to the tree
         for(var i=0; i<this.nv; i++){
-            u = pq.delete_minimum();
+            u = pq.deleteMin();
             this.vert[u].visit = true;
 
             this.VT[i] = {
@@ -438,7 +448,7 @@ function primImpl2(){
     for(var i=1; i<this.nv; i++){
 
         //delete minimum-weight edge from queue
-        u =pq.delete_minimum();
+        u =pq.deleteMin();
 
         //mark a vertex as visit
         this.vert[u].visit = true;
