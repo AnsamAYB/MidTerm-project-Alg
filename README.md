@@ -1,5 +1,7 @@
 # MidTerm-project-Alg
 Midterm group project for Algorithms and datastructure course II
+
+
 Team task assignment:  
 • Member 1 (Ehsan) : Output function, test input files, integration testing 
 
