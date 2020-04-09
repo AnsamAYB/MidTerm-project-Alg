@@ -107,7 +107,7 @@ function main_graph()
     
     g.prim();
     if(g.weighted){
-        printTree(g.VT);
+        print_tree(g.VT);
     }
     else
     {
@@ -119,7 +119,7 @@ function main_graph()
     document.write('<br>Shortest paths by Dijkstra from vertex 0<br>');
     g.Dijkstra(0);
     if(g.weighted){
-        printTree(g.VT);
+        print_tree(g.VT);
     }
     else
     {
@@ -256,7 +256,7 @@ function Graph()
       @method
     */
 
-    this.hasPath = hasPath;                 
+    this.hasPathImpl = hasPathImpl;                 
     
     /**
       Return distance of the shortest path between two vertices in weighted graph
@@ -300,7 +300,13 @@ function Graph()
 
 // transitive closure package 
 
-function printTree(VT){
+/**
+ * function thah helps to print the output of prim and Dijkstra algorithms
+   @author Ansam Ali
+   @param {object[]} VT an array of 
+*/
+
+function print_tree(VT){
     for(i=0; i<VT.length-1; i++){
         document.write((VT[i].distance===undefined? '':VT[i].distance) ,'(',VT[i].parent,',',VT[i].tree,'),');
     }
@@ -492,7 +498,14 @@ function primImpl2(){
 
 }
 
-
+/**
+ * This is an imlementation for Prim's algorithm which finds the minimal spanning tree(MSP)
+ * It finds the connected acyclic subgraph (tree) that contains all vertices with smallest total weight.
+   @author Ansam Ali
+   @deprecated Obsolete first implementation. Use {@link primImpl2} instead.
+   @implements Graph#prim
+   @returns {object} array of edges of the minimal spanning tree 
+*/
 
 function primImpl(){
 
@@ -540,9 +553,16 @@ function primImpl(){
     }
     return Et;
 }
+/**
+ * This func is to check if there is a path between 2 given vertices in a directed graph.
+   @author Ansam Ali
+   @implements Graph#hasPathImpl
+   @param {number} u_i Source vertex id
+   @param {number} v_i Target vertex id
+   @returns {boolean}  Is there a path from vertex with id u_i to vertex with id v_i in a directed graph. error message if undirected.
+*/
 
-
-function hasPath(u_i, v_i)
+function hasPathImpl(u_i, v_i)
 {
     //if the grapgh is undirected, tc will be undefiend ==> return error message.
     //if the grapgh is directed, and tc !=1 ==> no path ==> return false.
@@ -572,7 +592,7 @@ function isDAGImpl()
 
 	for (var i = 0; i < this.nv; i++) 
 		{
-		if (this.hasPath(i, i))     //If there's a path from a vertix to itself, then there's a cycle. Otherwise not.
+		if (this.hasPathImpl(i, i))     //If there's a path from a vertix to itself, then there's a cycle. Otherwise not.
 		{
 			return false;
 		}
